@@ -1,0 +1,30 @@
+nginx-http-auth.conf
+[Definition]
+
+
+failregex = ^ \[error\] \d+#\d+: \*\d+ user "\S+":? (password mismatch|was not found in ".*"), client: <HOST>, server: \S+, request: "\S+ \S+ HTTP/\d+\.\d+", host: "\S+"\s*$
+            ^ \[error\] \d+#\d+: \*\d+ no user/password was provided for basic authentication, client: <HOST>, server: \S+, request: "\S+ \S+ HTTP/\d+\.\d+", host: "\S+"\s*$
+
+ignoreregex =
+
+nginx-noscript.conf
+[Definition]
+
+failregex = ^<HOST> -.*GET.*(\.php|\.asp|\.exe|\.pl|\.cgi|\.scgi)
+
+ignoreregex =
+
+nginx-nohome.conf
+[Definition]
+
+failregex = ^<HOST> -.*GET .*/~.*
+
+ignoreregex =
+
+
+nginx-noproxy.conf
+[Definition]
+
+failregex = ^<HOST> -.*GET http.*
+
+ignoreregex =
